@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe - DATAPUB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy-dark: #021526;
+            --navy: #03346E;
+            --blue-light: #6EACDA;
+            --cream: #E2E2B6;
+            --text-dark: #1a1a1a;
+            --text-medium: #4a4a4a;
+            --bg-light: #f8f8f8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+
+        header {
+            background: var(--navy-dark);
+            color: var(--cream);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--cream);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--blue-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--blue-light);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: var(--blue-light);
+            border: none;
+            color: var(--navy-dark);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            color: var(--cream);
+            padding: 120px 2rem 60px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--blue-light);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--cream);
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            border-color: var(--blue-light);
+            transform: translateY(-5px);
+        }
+
+        .member-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--blue-light) 100%);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .team-member h3 {
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .member-role {
+            color: var(--blue-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .team-member p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .member-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .member-links a {
+            color: var(--navy);
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        .member-links a:hover {
+            color: var(--blue-light);
+        }
+
+        .cta-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--blue-light);
+            margin-top: 5rem;
+        }
+
+        .cta-box h3 {
+            color: var(--navy);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--cream);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: var(--navy-dark);
+        }
+
+        footer {
+            background: var(--navy-dark);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--blue-light);
+            font-weight: 600;
+        }
+
+        .footer-section a {
+            color: var(--cream);
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 0;
+            opacity: 0.9;
+        }
+
+        .footer-section a:hover {
+            color: var(--blue-light);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(226, 226, 182, 0.2);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                order: -1;
+                margin-right: auto;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 280px;
+                height: calc(100vh - 70px);
+                background: var(--navy-dark);
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                transition: left 0.3s;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">📊</div>
+                <span>DATAPUB</span>
+            </a>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="equipe.html">Equipe</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="publicacoes.html">Publicações</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Nossa Equipe</h1>
+        <p>Conheça quem faz o DATAPUB acontecer</p>
+    </section>
+
+    <div class="container">
+        <section>
+            <h2>Coordenação</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">👤</div>
+                    <h3>[Nome do Coordenador]</h3>
+                    <div class="member-role">Coordenador Geral</div>
+                    <p>Professor responsável pela direção estratégica do núcleo, supervisão de projetos e articulação institucional.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">👤</div>
+                    <h3>[Nome do Coordenador Técnico]</h3>
+                    <div class="member-role">Coordenador Técnico</div>
+                    <p>Especialista em HPC e ciência de dados, responsável pela gestão de infraestrutura computacional e orientação metodológica.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 5rem;">
+            <h2>Pesquisadores</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">👤</div>
+                    <h3>[Nome do Pesquisador 1]</h3>
+                    <div class="member-role">Pesquisador Colaborador</div>
+                    <p>Doutor em [Área], especialista em análise de políticas sociais e avaliação de programas governamentais.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">👤</div>
+                    <h3>[Nome do Pesquisador 2]</h3>
+                    <div class="member-role">Pesquisador Colaborador</div>
+                    <p>Doutora em [Área], pesquisadora em mercado de trabalho e desigualdades socioeconômicas.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">👤</div>
+                    <h3>[Nome do Pesquisador 3]</h3>
+                    <div class="member-role">Pesquisador Colaborador</div>
+                    <p>Doutor em [Área], especialista em machine learning aplicado a ciências sociais.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 5rem;">
+            <h2>Estudantes de Pós-Graduação</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">🎓</div>
+                    <h3>[Nome do Mestrando 1]</h3>
+                    <div class="member-role">Mestrando</div>
+                    <p>Pesquisa sobre inserção profissional de jovens utilizando técnicas de análise de sobrevivência e RAIS.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">🎓</div>
+                    <h3>[Nome do Mestrando 2]</h3>
+                    <div class="member-role">Mestranda</div>
+                    <p>Dissertação sobre avaliação de políticas de transferência de renda com métodos quase-experimentais.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">🎓</div>
+                    <h3>[Nome do Doutorando 1]</h3>
+                    <div class="member-role">Doutorando</div>
+                    <p>Tese sobre aplicação de deep learning para análise de políticas públicas educacionais.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 5rem;">
+            <h2>Estudantes de Graduação</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">📚</div>
+                    <h3>[Nome do Aluno 1]</h3>
+                    <div class="member-role">Iniciação Científica</div>
+                    <p>Graduando em [Curso], bolsista FAPESP pesquisando análise de dados do mercado de trabalho.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">📚</div>
+                    <h3>[Nome do Aluno 2]</h3>
+                    <div class="member-role">Iniciação Científica</div>
+                    <p>Graduanda em [Curso], desenvolvendo análises exploratórias sobre desigualdades regionais.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">📚</div>
+                    <h3>[Nome do Aluno 3]</h3>
+                    <div class="member-role">Voluntário</div>
+                    <p>Graduando em [Curso], participante voluntário interessado em aprendizado de ciência de dados.</p>
+                    <div class="member-links">
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">📚</div>
+                    <h3>[Nome do Aluno 4]</h3>
+                    <div class="member-role">Voluntário</div>
+                    <p>Graduanda em [Curso], contribuindo em projetos de visualização de dados e dashboards.</p>
+                    <div class="member-links">
+                        <a href="#" title="Email">✉️</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-top: 5rem;">
+            <h2>Colaboradores Externos</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">🤝</div>
+                    <h3>[Nome do Colaborador]</h3>
+                    <div class="member-role">Pesquisador Visitante</div>
+                    <p>Pesquisador de [Instituição], colaborador em projeto sobre análise de dados educacionais.</p>
+                    <div class="member-links">
+                        <a href="#" title="Lattes">📄</a>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">🤝</div>
+                    <h3>[Nome do Colaborador 2]</h3>
+                    <div class="member-role">Consultor Técnico</div>
+                    <p>Especialista em [Área], apoio técnico em infraestrutura computacional e big data.</p>
+                    <div class="member-links">
+                        <a href="#" title="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="cta-box">
+            <h3>Faça Parte da Nossa Equipe</h3>
+            <p>O DATAPUB está sempre aberto a novos participantes interessados em ciência de dados aplicada a políticas públicas. Estudantes de graduação e pós-graduação são bem-vindos!</p>
+            <a href="contato.html" class="cta-button">Entre em Contato</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>DATAPUB</h4>
+                <p>Núcleo de Estudos e Pesquisa em Ciência de Dados e IA em Políticas Públicas</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navegação</h4>
+                <a href="index.html">Home</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="projetos.html">Projetos</a>
+                <a href="equipe.html">Equipe</a>
+            </div>
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <a href="publicacoes.html">Publicações</a>
+                <a href="recursos.html">Bases de Dados</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            <div class="footer-section">
+                <h4>Parceiros</h4>
+                <a href="#">OIPP</a>
+                <a href="#">LDPP</a>
+                <a href="#">FAPESP</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DATAPUB - Universidade de São Paulo</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
