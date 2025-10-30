@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATAPUB - Núcleo de Estudos em Ciência de Dados e IA em Políticas Públicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FAF8F1;
+            --yellow: #FAEAB1;
+            --teal: #34656D;
+            --dark-green: #334443;
+            --text-dark: #2a2a2a;
+            --text-medium: #4a4a4a;
+            --text-light: #6a6a6a;
+        }
+
+        body {
+            font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--cream);
+        }
+
+        /* Header */
+        header {
+            background: var(--teal);
+            color: var(--cream);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--cream);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--yellow);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--yellow);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--teal) 0%, var(--dark-green) 100%);
+            color: var(--cream);
+            padding: 150px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(250, 234, 177, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: var(--cream);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--cream);
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--dark-green);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: #f5e095;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--cream);
+            padding: 4rem 2rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 2rem;
+            background: var(--cream);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--yellow);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--dark-green);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+        }
+
+        /* Pillars */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pillar {
+            background: var(--cream);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--yellow);
+        }
+
+        .pillar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .pillar-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .pillar h3 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+
+        .pillar p {
+            font-size: 1rem;
+            color: var(--text-medium);
+        }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid var(--yellow);
+        }
+
+        .team-member h4 {
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .team-member p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--cream);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 2px solid var(--teal);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            background: var(--teal);
+            color: var(--cream);
+            padding: 2rem;
+        }
+
+        .project-header h3 {
+            color: var(--cream);
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-body p {
+            color: var(--text-medium);
+        }
+
+        .project-tag {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--dark-green);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Resources */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .resource-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--teal);
+        }
+
+        .resource-card h4 {
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+
+        .resource-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .resource-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-medium);
+        }
+
+        .resource-card li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+        }
+
+        /* News */
+        .news-list {
+            margin-top: 3rem;
+        }
+
+        .news-item {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--teal);
+        }
+
+        .news-date {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-item h4 {
+            color: var(--teal);
+            margin-bottom: 0.5rem;
+        }
+
+        .news-item p {
+            color: var(--text-medium);
+        }
+
+        /* Contact */
+        .contact-info {
+            background: var(--cream);
+            padding: 3rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            border: 2px solid var(--yellow);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item h4 {
+            color: var(--teal);
+        }
+
+        .contact-item p {
+            color: var(--text-medium);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--teal);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-green);
+            color: var(--cream);
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--yellow);
+        }
+
+        .footer-section p {
+            color: var(--cream);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--cream);
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 0;
+            transition: color 0.3s;
+            opacity: 0.9;
+        }
+
+        .footer-section a:hover {
+            color: var(--yellow);
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(250, 248, 241, 0.2);
+            color: var(--cream);
+            opacity: 0.8;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: var(--yellow);
+            border: none;
+            color: var(--dark-green);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            transition: background 0.3s;
+            font-weight: 700;
+        }
+
+        .menu-toggle:hover {
+            background: #f5e095;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 4rem 1.5rem;
+            }
+
+            .pillars {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+                order: -1;
+                margin-right: auto;
+            }
+
+            .logo {
+                margin: 0 auto;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 280px;
+                max-width: 85%;
+                height: calc(100vh - 70px);
+                background: var(--teal);
+                flex-direction: column;
+                gap: 0;
+                padding: 1rem 0;
+                transition: left 0.3s ease;
+                box-shadow: 4px 0 10px rgba(0,0,0,0.2);
+                overflow-y: auto;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: left;
+                padding: 0;
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid rgba(250, 248, 241, 0.1);
+                transition: background 0.3s, padding-left 0.3s;
+            }
+
+            nav ul li a:hover {
+                background: rgba(250, 234, 177, 0.1);
+                padding-left: 2rem;
+            }
+
+            .hero {
+                padding: 120px 1.5rem 80px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .stats {
+                padding: 3rem 1rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.95rem;
+            }
+
+            .container {
+                padding: 3rem 1rem;
+            }
+
+            section {
+                margin-bottom: 3rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .pillars {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pillar {
+                padding: 2rem;
+            }
+
+            .pillar-icon {
+                font-size: 2.5rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-header {
+                padding: 1.5rem;
+            }
+
+            .project-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .project-body {
+                padding: 1.5rem;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-info {
+                padding: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .pillar-icon {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">📊</div>
+                <span>DATAPUB</span>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+                ☰
+            </button>
+            <ul id="nav-menu">
+                <li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+                <li><a href="#projetos" onclick="closeMenu()">Projetos</a></li>
+                <li><a href="#equipe" onclick="closeMenu()">Equipe</a></li>
+                <li><a href="#recursos" onclick="closeMenu()">Recursos</a></li>
+                <li><a href="#noticias" onclick="closeMenu()">Notícias</a></li>
+                <li><a href="#contato" onclick="closeMenu()">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transformando Dados em Políticas Públicas</h1>
+            <p>Núcleo de Estudos e Pesquisa em Ciência de Dados e Inteligência Artificial aplicados a Políticas Públicas</p>
+            <a href="#sobre" class="cta-button">Conheça o DATAPUB</a>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Pilares de Atuação</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Projetos em Andamento</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Bases de Dados</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Possibilidades</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Sobre -->
+        <section id="sobre">
+            <h2>Sobre o DATAPUB</h2>
+            <p>O DATAPUB é um núcleo de estudos e pesquisa da Universidade de São Paulo voltado à formação de estudantes de graduação e pós-graduação em análise de dados aplicada a políticas públicas. Integramos <strong>aprendizado baseado em problemas</strong>, <strong>protagonismo estudantil</strong> e <strong>pesquisa aplicada</strong>, conectando participantes a projetos reais que impactam decisões públicas e acadêmicas.</p>
+            
+            <p>Com infraestrutura de alto desempenho computacional (HPC), acesso a bases de dados administrativas e de pesquisa, e uma equipe multidisciplinar, o DATAPUB oferece um ambiente único para o desenvolvimento de competências em ciência de dados e inteligência artificial voltadas ao setor público.</p>
+
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="pillar-icon">🔍</div>
+                    <h3>Diagnosticar</h3>
+                    <p>Utilizamos dados e técnicas avançadas de análise para diagnosticar problemas complexos em políticas públicas, gerando insights acionáveis.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">🎓</div>
+                    <h3>Capacitar</h3>
+                    <p>Formamos estudantes através de aprendizado prático, desenvolvendo competências técnicas e pensamento crítico sobre uso de dados.</p>
+                </div>
+                <div class="pillar">
+                    <div class="pillar-icon">🚀</div>
+                    <h3>Transformar</h3>
+                    <p>Produzimos conhecimento que subsidia políticas públicas baseadas em evidências, contribuindo para decisões mais efetivas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projetos -->
+        <section id="projetos">
+            <h2>Projetos de Pesquisa</h2>
+            <p>Desenvolvemos projetos que combinam rigor metodológico com relevância prática, contribuindo para o avanço do conhecimento e para a melhoria de políticas públicas.</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Inserção Profissional de Egressos USP</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Análise da trajetória profissional de alunos e egressos da USP no mercado formal de trabalho utilizando dados da RAIS e registros administrativos da universidade.</p>
+                        <div>
+                            <span class="project-tag">RAIS</span>
+                            <span class="project-tag">Mercado de Trabalho</span>
+                            <span class="project-tag">FAPESP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Análise de Políticas Sociais</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Estudo de programas sociais brasileiros utilizando bases administrativas e pesquisas domiciliares, com foco em avaliação de impacto e desigualdades.</p>
+                        <div>
+                            <span class="project-tag">PNAD Contínua</span>
+                            <span class="project-tag">Políticas Sociais</span>
+                            <span class="project-tag">Avaliação</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Machine Learning para Políticas Públicas</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Desenvolvimento de modelos de aprendizado de máquina para predição e classificação de fenômenos sociais relevantes para políticas públicas.</p>
+                        <div>
+                            <span class="project-tag">IA</span>
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Predição</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipe -->
+        <section id="equipe">
+            <h2>Nossa Equipe</h2>
+            <p>O DATAPUB reúne pesquisadores, estudantes e profissionais comprometidos com o uso de dados para o bem público.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <h4>Coordenação Geral</h4>
+                    <p>Direcionamento estratégico e supervisão de projetos de pesquisa</p>
+                </div>
+                <div class="team-member">
+                    <h4>Coordenação Técnica</h4>
+                    <p>Gestão de infraestrutura HPC e orientação metodológica em ciência de dados</p>
+                </div>
+                <div class="team-member">
+                    <h4>Pesquisadores</h4>
+                    <p>Equipe multidisciplinar de docentes e pesquisadores colaboradores</p>
+                </div>
+                <div class="team-member">
+                    <h4>Estudantes de Pós-Graduação</h4>
+                    <p>Mestrandos e doutorandos em projetos de pesquisa aplicada</p>
+                </div>
+                <div class="team-member">
+                    <h4>Estudantes de Graduação</h4>
+                    <p>Alunos de iniciação científica e formação complementar</p>
+                </div>
+                <div class="team-member">
+                    <h4>Parceiros Institucionais</h4>
+                    <p>OIPP, LDPP e outras instituições colaboradoras</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recursos -->
+        <section id="recursos">
+            <h2>Recursos e Infraestrutura</h2>
+            <p>Disponibilizamos infraestrutura computacional avançada, bases de dados e materiais de capacitação para nossa comunidade.</p>
+            
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h4>🖥️ Infraestrutura</h4>
+                    <ul>
+                        <li>Servidor HPC vinculado ao OIPP</li>
+                        <li>Laboratório de Dados (LDPP)</li>
+                        <li>Repositório Interdisciplinar</li>
+                        <li>Ambiente colaborativo</li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h4>📊 Bases de Dados</h4>
+                    <ul>
+                        <li>RAIS (mercado de trabalho)</li>
+                        <li>PNAD Contínua</li>
+                        <li>Dados administrativos USP</li>
+                        <li>Censo Demográfico</li>
+                    </ul>
+                </div>
+                <div class="resource-card">
+                    <h4>🛠️ Ferramentas</h4>
+                    <ul>
+                        <li>Python & R</li>
+                        <li>SQL & Git/GitHub</li>
+                        <li>Jupyter Notebooks</li>
+                        <li>Bibliotecas de ML/IA</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notícias -->
+        <section id="noticias">
+            <h2>Notícias e Eventos</h2>
+            
+            <div class="news-list">
+                <div class="news-item">
+                    <div class="news-date">Outubro 2025</div>
+                    <h4>Lançamento do DATAPUB</h4>
+                    <p>Anunciamos oficialmente a criação do Núcleo de Estudos e Pesquisa em Ciência de Dados e IA em Políticas Públicas da USP. Estamos abertos para novos participantes!</p>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">Novembro 2025</div>
+                    <h4>Primeira Reunião de Planejamento</h4>
+                    <p>Realizamos nossa primeira reunião com participantes para definir projetos prioritários e cronograma de atividades do semestre.</p>
+                </div>
+
+                <div class="news-item">
+                    <div class="news-date">Em breve</div>
+                    <h4>Oficina: Introdução à Análise de Dados em Python</h4>
+                    <p>Mini-oficina prática sobre manipulação e análise de dados com pandas e visualização com matplotlib/seaborn. Aberta a todos os participantes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato">
+            <h2>Entre em Contato</h2>
+            <p>Interessado em participar ou colaborar com o DATAPUB? Entre em contato conosco!</p>
+            
+            <div class="contact-info">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>datapub@usp.br</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Localização</h4>
+                            <p>Universidade de São Paulo<br>São Paulo, SP</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div>
+                            <h4>Redes Sociais</h4>
+                            <p>Twitter | LinkedIn | Instagram</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>DATAPUB</h4>
+                <p>Núcleo de Estudos e Pesquisa em Ciência de Dados e IA em Políticas Públicas</p>
+                <p style="margin-top: 1rem; opacity: 0.7;">Universidade de São Paulo</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#recursos">Recursos</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="#">Publicações</a></li>
+                    <li><a href="#">Bases de Dados</a></li>
+                    <li><a href="#">Tutoriais</a></li>
+                    <li><a href="#">Documentação</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Parceiros</h4>
+                <ul>
+                    <li><a href="#">OIPP</a></li>
+                    <li><a href="#">LDPP</a></li>
+                    <li><a href="#">FAPESP</a></li>
+                    <li><a href="#">USP</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DATAPUB - Universidade de São Paulo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.remove('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('nav-menu');
+            const toggle = document.querySelector('.menu-toggle');
+            const nav = document.querySelector('nav');
+            
+            if (!nav.contains(event.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling para links âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Adiciona animação ao scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
